@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 7;
+use Test::More tests => 9;
 
 {
     package MyApp;
@@ -13,6 +13,9 @@ use Test::More tests => 7;
     };
     any '/foo' => sub {
         return "ANY FOO"
+    };
+    any [qw/DELETE/] => '/entry' => sub {
+        return "DELETE entry"
     };
 }
 
@@ -36,5 +39,11 @@ is "$r1", "$r2";
     my $route = MyApp->router->match( +{ REQUEST_METHOD => 'POST', PATH_INFO => '/' } );
     ok $route, 'POST /';
     is $route->{code}->(), "POST TOP";
+}
+
+{
+    my $route = MyApp->router->match( +{ REQUEST_METHOD => 'DELETE', PATH_INFO => '/entry' } );
+    ok $route, 'POST /';
+    is $route->{code}->(), "DELETE entry";
 }
 
