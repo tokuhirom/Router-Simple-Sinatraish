@@ -94,7 +94,7 @@ Router::Simple::Sinatraish -
 
 Router::Simple::Sinatraish is toolkit library for sinatra-ish WAF.
 
-=head1 EXPORTED METHODS
+=head1 EXPORTABLE METHODS
 
 =over 4
 
@@ -104,7 +104,7 @@ Returns this instance of L<Router::Simple>.
 
 =back
 
-=head1 EXPORTED FUNCTIONS
+=head1 EXPORTABLE FUNCTIONS
 
 =over 4
 
