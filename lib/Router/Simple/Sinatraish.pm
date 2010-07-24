@@ -8,12 +8,10 @@ use Router::Simple;
 
 our @EXPORT = qw/router any get post/;
 
-# our $ROUTERS;
 sub router {
     my $class = shift;
     no strict 'refs';
     ${"${class}::ROUTER"} ||= Router::Simple->new();
-    # $ROUTERS->{$class} ||= Router::Simple->new();
 }
 
 # any [qw/get post delete/] => '/bye' => sub { ... };
