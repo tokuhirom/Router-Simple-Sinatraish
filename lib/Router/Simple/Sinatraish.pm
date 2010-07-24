@@ -1,10 +1,49 @@
 package Router::Simple::Sinatraish;
 use strict;
 use warnings;
+use parent qw/Exporter/;
 use 5.00800;
 our $VERSION = '0.01';
+use Router::Simple;
 
+our @EXPORT = qw/router any get post/;
 
+# our $ROUTERS;
+sub router {
+    my $class = shift;
+    no strict 'refs';
+    ${"${class}::ROUTER"} ||= Router::Simple->new();
+    # $ROUTERS->{$class} ||= Router::Simple->new();
+}
+
+# any [qw/get post delete/] => '/bye' => sub { ... };
+# any '/bye' => sub { ... };
+sub any($$;$) {
+    my $pkg = caller(0);
+    if (@_==3) {
+        my ($methods, $pattern, $code) = @_;
+        $pkg->router->connect(
+            $pattern,
+            {code => $code},
+            { method => [ map { uc $_ } @$methods ] }
+        );
+    } else {
+        my ($pattern, $code) = @_;
+        $pkg->router->connect(
+            $pattern,
+            {code => $code},
+        );
+    }
+}
+
+sub get  {
+    my $pkg = caller(0);
+    $pkg->router->connect($_[0], {code => $_[1]}, {method => ['GET', 'HEAD']});
+}
+sub post {
+    my $pkg = caller(0);
+    $pkg->router->connect($_[0], {code => $_[1]}, {method => ['POST']});
+}
 
 1;
 __END__
