@@ -1,4 +1,9 @@
 Revision history for Perl extension Router::Simple::Sinatraish
 
+0.02
+
+        - avoid warnings(gfx)
+        - small doc fix(gfx)
+
 0.01    Thu Jul 22 10:32:06 2010
         - original version

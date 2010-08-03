@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use parent qw/Exporter/;
 use 5.00800;
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 use Router::Simple;
 
 our @EXPORT = qw/router any get post/;
