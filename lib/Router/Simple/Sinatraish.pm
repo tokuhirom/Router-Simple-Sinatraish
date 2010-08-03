@@ -51,7 +51,7 @@ __END__
 
 =head1 NAME
 
-Router::Simple::Sinatraish -
+Router::Simple::Sinatraish - Sinatra-ish routers on Router::Simple
 
 =head1 SYNOPSIS
 
