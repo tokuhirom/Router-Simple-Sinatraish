@@ -11,6 +11,7 @@ our @EXPORT = qw/router any get post/;
 sub router {
     my $class = shift;
     no strict 'refs';
+    no warnings 'once';
     ${"${class}::ROUTER"} ||= Router::Simple->new();
 }
 
