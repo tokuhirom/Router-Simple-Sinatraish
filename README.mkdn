@@ -1,6 +1,6 @@
 # NAME
 
-Router::Simple::Sinatraish -
+Router::Simple::Sinatraish - Sinatra-ish routers on Router::Simple
 
 # SYNOPSIS
 
